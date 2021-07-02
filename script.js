@@ -42,7 +42,9 @@ function playRound(userChoice){
             }
         }
         else if (didUserWin(userChoice, compChoice) === undefined){ //The didUserWin function will return undefined if the user and the computer chose the same option
-
+            const gameState = document.querySelector("#game-state");
+            gameState.style.color = "#FFE84A";
+            gameState.textContent = "Computer chose the same as you."
         }
 }
 
@@ -76,28 +78,38 @@ function didUserWin(userChoice, compChoice){ //This function checks whether the 
 }
 
 function winAlert(userChoice, compChoice){ //This function generates the round won message for the user
+    const userScore = document.querySelector("#user-score");
+    userScore.textContent= `User: ${gamesWon}`;
+
+    const gameState = document.querySelector("#game-state");
+    gameState.style.color = "green";
+
     if(userChoice==="PAPER" && compChoice ==="ROCK"){
-        alert("Computer chose rock, you win this round");
+        gameState.textContent = "You won! Computer chose ROCK";
+
     }
     else if(userChoice==="SCISSORS" && compChoice ==="PAPER"){
-        alert("Computer chose paper, you win this round");
+        gameState.textContent = "You won! Computer chose PAPER";
     }
     else if(userChoice==="ROCK" && compChoice ==="SCISSORS"){
-        alert("Computer chose scissors, you won this round");
+        gameState.textContent = "You won! Computer chose SCISSORS";
     }
 }
 
 function loseAlert(userChoice, compChoice){ //This function generates the round lost message for the user
+    const computerScore = document.querySelector("#computer-score");
+    computerScore.textContent = `Computer: ${gamesLost}`;
+    
+    const gameState = document.querySelector("#game-state");
+    gameState.style.color = "red";
+
     if(userChoice==="ROCK" && compChoice ==="PAPER"){
-        alert("Computer chose paper, you lost this round");
-        return false;
+        gameState.textContent = "You lost. Computer chose PAPER";
     }
     else if(userChoice==="PAPER" && compChoice ==="SCISSORS"){
-        alert("Computer chose scissors, you lost this round");
-        return false;
+        gameState.textContent = "You lost. Computer chose SCISSORS";
     }
     else if(userChoice==="SCISSORS" && compChoice ==="ROCK"){
-        alert("Computer chose rock, you lost this round");
-        return false;
+        gameState.textContent = "You lost. Computer chose ROCK";
     }
 }

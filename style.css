@@ -39,6 +39,32 @@ h3{
     justify-content: center;
 }
 
+#score-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#user-comp-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.won{
+    color: green;
+}
+
+.lost{
+    color: orangered;
+}
+
+.draw{
+    color: #FFE84A;
+}
+
 #computer-score{
     margin-left: 30px;
 }
@@ -55,6 +81,7 @@ h3{
 .rps-icon:hover{
     width: 14%;
 }
+
 
 /* FOOTER STYLING */
 
