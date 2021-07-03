@@ -1,11 +1,23 @@
 let gamesWon = 0; //If this reaches 2 then you have won
 let gamesLost = 0; //If this reaches 2 then you have lost
+let gameOver = false;
+
 
 const buttons = document.querySelectorAll('.rps-icon');
 
+
+
 buttons.forEach((button) => { // we use the .forEach method to iterate through each button
   button.addEventListener('click', function (e) {// and for each one we add a 'click' listener
+    if(gameOver){
+        const playButton = document.querySelector(".play-again");
+        setTimeout(function(){
+            playButton.style.fontSize = "16px";
+        }, 100);
+        playButton.style.fontSize = "18px";
+    }else{
     playRound(e.target.id.toUpperCase());
+    }
   });  
 });
 
@@ -26,24 +38,60 @@ function playRound(userChoice){
     }
 
     compChoice = compChoice.toUpperCase();
-
+    const gameState = document.querySelector("#game-state");
     if(didUserWin(userChoice, compChoice)){ //This if statement calls the didUserWin function. If true then the program will go into the body of the if statement
             gamesWon += 1; 
             winAlert(userChoice, compChoice); //The winAlert function alerts the user that they won and also tells the user what the computer chose
             if(gamesWon===5){ //If the gamesWon value reaches 2 then the user has won
-                
+                gameState.style.color = "black";                
+                gameState.textContent = "YOU WON THE GAME!"
+                playAgain();
             }
         }
         else if (didUserWin(userChoice, compChoice)===false){ //The same  as before. If the user has lost a round then the program will enter the body of the if statement
             gamesLost += 1; 
             loseAlert(userChoice, compChoice); //The lose alert function alerts the user that they have lost and also tells the user what the computer chose
             if(gamesLost===5){ //If  the gamesLost value reaches 2 the the user has lost
-                
+                gameState.style.color = "black";
+                gameState.textContent = "YOU LOST THE GAME :("
+                playAgain();
             }
         }
         else if (didUserWin(userChoice, compChoice) === undefined){ //The didUserWin function will return undefined if the user and the computer chose the same option
-
+            gameState.style.color = "#FFE84A";
+            gameState.textContent = "Computer chose the same as you."
         }
+}
+
+function playAgain(){
+    gameOver = true;
+    const scoreContainer = document.querySelector("#score-container");
+    const playButton = document.createElement("button");
+
+    playButton.classList.add("play-again");
+    playButton.textContent = "Play again?"
+
+    scoreContainer.appendChild(playButton);
+
+    playButton.addEventListener('click', function(){
+        gamesWon = 0;
+        gamesLost = 0;
+
+        const userScore = document.querySelector("#user-score");
+        userScore.textContent= `User: ${gamesWon}`;
+        const computerScore = document.querySelector("#computer-score");
+        computerScore.textContent = `Computer: ${gamesLost}`;
+
+        const gameState = document.querySelector("#game-state");
+        gameState.textContent = "";
+
+        playButton.remove();
+
+        gameOver = false;
+
+    })
+
+    
 }
 
 function getRandom() {
@@ -76,28 +124,38 @@ function didUserWin(userChoice, compChoice){ //This function checks whether the 
 }
 
 function winAlert(userChoice, compChoice){ //This function generates the round won message for the user
+    const userScore = document.querySelector("#user-score");
+    userScore.textContent= `User: ${gamesWon}`;
+
+    const gameState = document.querySelector("#game-state");
+    gameState.style.color = "green";
+
     if(userChoice==="PAPER" && compChoice ==="ROCK"){
-        alert("Computer chose rock, you win this round");
+        gameState.textContent = "You won! Computer chose ROCK";
+
     }
     else if(userChoice==="SCISSORS" && compChoice ==="PAPER"){
-        alert("Computer chose paper, you win this round");
+        gameState.textContent = "You won! Computer chose PAPER";
     }
     else if(userChoice==="ROCK" && compChoice ==="SCISSORS"){
-        alert("Computer chose scissors, you won this round");
+        gameState.textContent = "You won! Computer chose SCISSORS";
     }
 }
 
 function loseAlert(userChoice, compChoice){ //This function generates the round lost message for the user
+    const computerScore = document.querySelector("#computer-score");
+    computerScore.textContent = `Computer: ${gamesLost}`;
+    
+    const gameState = document.querySelector("#game-state");
+    gameState.style.color = "red";
+
     if(userChoice==="ROCK" && compChoice ==="PAPER"){
-        alert("Computer chose paper, you lost this round");
-        return false;
+        gameState.textContent = "You lost. Computer chose PAPER";
     }
     else if(userChoice==="PAPER" && compChoice ==="SCISSORS"){
-        alert("Computer chose scissors, you lost this round");
-        return false;
+        gameState.textContent = "You lost. Computer chose SCISSORS";
     }
     else if(userChoice==="SCISSORS" && compChoice ==="ROCK"){
-        alert("Computer chose rock, you lost this round");
-        return false;
+        gameState.textContent = "You lost. Computer chose ROCK";
     }
 }
