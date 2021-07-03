@@ -61,8 +61,20 @@ h3{
     color: orangered;
 }
 
-.draw{
-    color: #FFE84A;
+.play-again{
+    background-color: red;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    padding: 10px;
+    font-family: 'Luckiest Guy', cursive;
+    box-shadow: 5px 5px #888888;
+}
+
+.play-again:active:hover {
+    font-size: 14px;
 }
 
 #computer-score{
