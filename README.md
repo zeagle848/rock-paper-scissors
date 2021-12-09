@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This calculator was developed as an assignment in the open-source web development course known as The Oding Project (TOP). The link to the assignment page can be found [here](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors). 
+This rock-paper-scissors application was developed as an assignment in the open-source web development course known as The Oding Project (TOP). The link to the assignment page can be found [here](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors). 
 
 ## Getting Started
 
