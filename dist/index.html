@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock-Paper-Scissors</title>
+  </head>
+  <body>
+    <header>
+      <h1>ROCK, PAPER, SCISSORS!</h1>
+      <p>Do you have what it takes to best the computer?</p>
+    </header>
+    <div id="body-container">
+      <div id="hand-container">
+        <img
+          src="./images/rock.png"
+          alt="rock hand"
+          class="rps-icon"
+          id="rock"
+        />
+        <img
+          src="./images/paper.png"
+          alt="paper hand"
+          class="rps-icon"
+          id="paper"
+        />
+        <img
+          src="./images/scissors.png"
+          alt="scissors hand"
+          class="rps-icon"
+          id="scissors"
+        />
+      </div>
+      <div id="score-container">
+        <h3>Score</h3>
+        <div id="user-comp-container">
+          <span id="user-score">User: 0</span>
+          <span id="computer-score">Computer: 0</span>
+        </div>
+        <span id="game-state"></span>
+      </div>
+    </div>
+    <footer>
+      <p>
+        Created by William Carpenter-Frank, 2021 |
+        <a href="https://github.com/zeagle848/rock-paper-scissors">GitHub</a>
+      </p>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
