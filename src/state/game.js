@@ -1,7 +1,7 @@
-const gameState = document.querySelector("#game-state");
-const userScore = document.querySelector("#user-score");
-const computerScore = document.querySelector("#computer-score");
-const scoreContainer = document.querySelector("#score-container");
+const gameState = document.querySelector(".game-state");
+const userScore = document.querySelector(".user-score");
+const computerScore = document.querySelector(".computer-score");
+const scoreContainer = document.querySelector(".score-container");
 const playButton = document.createElement("button");
 
 let gamesWon = 0;
@@ -32,17 +32,17 @@ function didUserWin({ userChoice, compChoice }) {
   }
 }
 
-function winAlert({ userChoice, compChoice }) {
+function winAlert({ compChoice }) {
   //This function generates the round won message for the user
   userScore.textContent = `User: ${gamesWon}`;
 
   gameState.style.color = "green";
 
-  if (userChoice === "PAPER" && compChoice === "ROCK") {
+  if (compChoice === "ROCK") {
     gameState.textContent = "You won! Computer chose ROCK";
-  } else if (userChoice === "SCISSORS" && compChoice === "PAPER") {
+  } else if (compChoice === "PAPER") {
     gameState.textContent = "You won! Computer chose PAPER";
-  } else if (userChoice === "ROCK" && compChoice === "SCISSORS") {
+  } else if (compChoice === "SCISSORS") {
     gameState.textContent = "You won! Computer chose SCISSORS";
   }
 }
@@ -53,11 +53,11 @@ function loseAlert({ userChoice, compChoice }) {
 
   gameState.style.color = "red";
 
-  if (userChoice === "ROCK" && compChoice === "PAPER") {
+  if (compChoice === "PAPER") {
     gameState.textContent = "You lost. Computer chose PAPER";
-  } else if (userChoice === "PAPER" && compChoice === "SCISSORS") {
+  } else if (compChoice === "SCISSORS") {
     gameState.textContent = "You lost. Computer chose SCISSORS";
-  } else if (userChoice === "SCISSORS" && compChoice === "ROCK") {
+  } else if (compChoice === "ROCK") {
     gameState.textContent = "You lost. Computer chose ROCK";
   }
 }

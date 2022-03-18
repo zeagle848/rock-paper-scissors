@@ -20,14 +20,14 @@ h1 {
   margin-bottom: 0px;
 }
 /* BODY STYLING */
-#body-container {
+.body-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-#hand-container {
+.hand-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,14 +39,14 @@ h3 {
   justify-content: center;
 }
 
-#score-container {
+.score-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-#user-comp-container {
+.user-comp-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,11 +81,11 @@ h3 {
   font-size: 14px;
 }
 
-#computer-score {
+.computer-score {
   margin-left: 30px;
 }
 
-#user-score {
+.user-score {
   margin-left: 50px;
 }
 
